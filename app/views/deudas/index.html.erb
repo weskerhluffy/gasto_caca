@@ -4,6 +4,7 @@
   <tr>
     <th>Monto</th>
     <th>Contraido</th>
+    <th>Descripcion</th>
     <th>Credito</th>
     <th></th>
     <th></th>
@@ -14,6 +15,7 @@
   <tr>
     <td><%= deuda.monto %></td>
     <td><%= deuda.contraido %></td>
+    <td><%= deuda.descripcion %></td>
     <td><%= deuda.credito.descripcion %></td>
     <td><%= link_to 'Show', deuda %></td>
     <td><%= link_to 'Edit', edit_deuda_path(deuda) %></td>

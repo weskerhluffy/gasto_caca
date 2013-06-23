@@ -27,6 +27,15 @@
     <%= f.label :tipo_egreso %><br />
     <%= f.collection_select(:tipo_egreso_id, TipoEgreso.all, :id, :descripcion) %>
   </div>
+  <div class="field">
+    <%= f.label :deuda %><br />
+    <% for deuda in Deuda.find(:all) %>
+		<div>
+			<%= check_box_tag "egreso[deuda_ids][]", deuda.id, @egreso.deudas.include?(deuda) %>
+			<%= deuda.descripcion %>
+		</div>
+	<% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

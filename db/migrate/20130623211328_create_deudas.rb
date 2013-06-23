@@ -3,6 +3,7 @@ class CreateDeudas < ActiveRecord::Migration
     create_table :deudas do |t|
       t.decimal :monto
       t.timestamp :contraido
+      t.text :descripcion
       t.references :credito
 
       t.timestamps

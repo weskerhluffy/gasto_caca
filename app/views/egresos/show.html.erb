@@ -19,6 +19,10 @@
   <b>Tipo egreso:</b>
   <%= @egreso.tipo_egreso.descripcion %>
 </p>
+<p>
+  <b>Deudas:</b>
+  <%= join_deudas(@egreso) %>
+</p>
 
 
 <%= link_to 'Edit', edit_egreso_path(@egreso) %> |

@@ -1,6 +1,6 @@
-class CreatePagoDeudas < ActiveRecord::Migration
+class CreateDeudasEgresos < ActiveRecord::Migration
   def change
-    create_table :pago_deudas, :id => false do |t|
+    create_table :deudas_egresos, :id => false do |t|
       t.integer :deuda_id
       t.integer :egreso_id
     end

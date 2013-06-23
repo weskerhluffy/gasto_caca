@@ -18,7 +18,7 @@ class DeudasControllerTest < ActionController::TestCase
 
   test "should create deuda" do
     assert_difference('Deuda.count') do
-      post :create, deuda: { contraido: @deuda.contraido, monto: @deuda.monto }
+      post :create, deuda: { contraido: @deuda.contraido, descripcion: @deuda.descripcion, monto: @deuda.monto }
     end
 
     assert_redirected_to deuda_path(assigns(:deuda))
@@ -35,7 +35,7 @@ class DeudasControllerTest < ActionController::TestCase
   end
 
   test "should update deuda" do
-    put :update, id: @deuda, deuda: { contraido: @deuda.contraido, monto: @deuda.monto }
+    put :update, id: @deuda, deuda: { contraido: @deuda.contraido, descripcion: @deuda.descripcion, monto: @deuda.monto }
     assert_redirected_to deuda_path(assigns(:deuda))
   end
 
