@@ -4,8 +4,10 @@ class CreateIngresos < ActiveRecord::Migration
       t.text :descripcion
       t.timestamp :aplicacion
       t.decimal :monto
+      t.references :tipo_ingreso
 
       t.timestamps
     end
+    add_index :ingresos, :tipo_ingreso_id
   end
 end

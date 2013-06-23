@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623192934) do
+ActiveRecord::Schema.define(:version => 20130623194830) do
 
   create_table "egresos", :force => true do |t|
     t.text     "descripcion"
@@ -28,9 +28,12 @@ ActiveRecord::Schema.define(:version => 20130623192934) do
     t.text     "descripcion"
     t.datetime "aplicacion"
     t.decimal  "monto"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "tipo_ingreso_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
+
+  add_index "ingresos", ["tipo_ingreso_id"], :name => "index_ingresos_on_tipo_ingreso_id"
 
   create_table "tipo_egresos", :force => true do |t|
     t.string   "descripcion"

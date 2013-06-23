@@ -15,6 +15,11 @@
   <%= @ingreso.monto %>
 </p>
 
+<p>
+  <b>Tipo ingreso:</b>
+  <%= @ingreso.tipo_ingreso.descripcion %>
+</p>
+
 
 <%= link_to 'Edit', edit_ingreso_path(@ingreso) %> |
 <%= link_to 'Back', ingresos_path %>

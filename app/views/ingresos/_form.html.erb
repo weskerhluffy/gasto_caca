@@ -23,6 +23,10 @@
     <%= f.label :monto %><br />
     <%= f.text_field :monto %>
   </div>
+  <div class="field">
+    <%= f.label :tipo_ingreso %><br />
+    <%= f.collection_select(:tipo_ingreso_id, TipoIngreso.all, :id, :descripcion) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

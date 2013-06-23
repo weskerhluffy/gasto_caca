@@ -2,10 +2,12 @@
 
 one:
   descripcion: MyText
-  aplicacion: 2013-06-23 02:32:49
-  monto: 
+  aplicacion: 2013-06-23 14:48:33
+  monto: 9.99
+  tipo_ingreso: 
 
 two:
   descripcion: MyText
-  aplicacion: 2013-06-23 02:32:49
-  monto: 
+  aplicacion: 2013-06-23 14:48:33
+  monto: 9.99
+  tipo_ingreso: 

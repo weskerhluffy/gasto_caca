@@ -1,3 +1,4 @@
 class Ingreso < ActiveRecord::Base
-  attr_accessible :aplicacion, :descripcion, :monto
+  belongs_to :tipo_ingreso
+  attr_accessible :aplicacion, :descripcion, :monto,:tipo_ingreso_id
 end
