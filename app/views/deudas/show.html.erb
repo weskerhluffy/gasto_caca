@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Monto:</b>
+  <%= @deuda.monto %>
+</p>
+
+<p>
+  <b>Contraido:</b>
+  <%= @deuda.contraido %>
+</p>
+
+<p>
+  <b>Credito:</b>
+  <%= @deuda.credito.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_deuda_path(@deuda) %> |
+<%= link_to 'Back', deudas_path %>

@@ -1,0 +1,27 @@
+<h1>Listing deudas</h1>
+
+<table>
+  <tr>
+    <th>Monto</th>
+    <th>Contraido</th>
+    <th>Credito</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @deudas.each do |deuda| %>
+  <tr>
+    <td><%= deuda.monto %></td>
+    <td><%= deuda.contraido %></td>
+    <td><%= deuda.credito.descripcion %></td>
+    <td><%= link_to 'Show', deuda %></td>
+    <td><%= link_to 'Edit', edit_deuda_path(deuda) %></td>
+    <td><%= link_to 'Destroy', deuda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Deuda', new_deuda_path %>

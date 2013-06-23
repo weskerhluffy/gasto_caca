@@ -1,0 +1,29 @@
+<%= form_for(@deuda) do |f| %>
+  <% if @deuda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deuda.errors.count, "error") %> prohibited this deuda from being saved:</h2>
+
+      <ul>
+      <% @deuda.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :monto %><br />
+    <%= f.text_field :monto %>
+  </div>
+  <div class="field">
+    <%= f.label :contraido %><br />
+    <%= f.datetime_select :contraido %>
+  </div>
+  <div class="field">
+    <%= f.label :credito %><br />
+    <%= f.collection_select(:credito_id, Credito.all, :id, :descripcion) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

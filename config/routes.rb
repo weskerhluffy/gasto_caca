@@ -1,4 +1,10 @@
 GastoCaca::Application.routes.draw do
+  resources :deudas
+
+
+  resources :creditos
+
+
   resources :ingresos
 
 

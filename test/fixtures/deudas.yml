@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  monto: 9.99
+  contraido: 2013-06-23 15:04:54
+  credito: 
+
+two:
+  monto: 9.99
+  contraido: 2013-06-23 15:04:54
+  credito: 

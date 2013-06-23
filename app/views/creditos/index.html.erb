@@ -1,0 +1,23 @@
+<h1>Listing creditos</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @creditos.each do |credito| %>
+  <tr>
+    <td><%= credito.descripcion %></td>
+    <td><%= link_to 'Show', credito %></td>
+    <td><%= link_to 'Edit', edit_credito_path(credito) %></td>
+    <td><%= link_to 'Destroy', credito, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Credito', new_credito_path %>
