@@ -1,0 +1,2 @@
+module TipoIngresosHelper
+end

@@ -1,0 +1,33 @@
+<%= form_for(@egreso) do |f| %>
+  <% if @egreso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@egreso.errors.count, "error") %> prohibited this egreso from being saved:</h2>
+
+      <ul>
+      <% @egreso.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :aplicacion %><br />
+    <%= f.datetime_select :aplicacion %>
+  </div>
+  <div class="field">
+    <%= f.label :monto %><br />
+    <%= f.text_field :monto %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_egreso %><br />
+    <%= f.collection_select(:tipo_egreso_id, TipoEgreso.all, :id, :descripcion) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

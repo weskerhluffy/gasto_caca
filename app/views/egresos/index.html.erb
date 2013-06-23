@@ -1,0 +1,29 @@
+<h1>Listing egresos</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th>Aplicacion</th>
+    <th>Monto</th>
+    <th>Tipo egreso</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @egresos.each do |egreso| %>
+  <tr>
+    <td><%= egreso.descripcion %></td>
+    <td><%= egreso.aplicacion %></td>
+    <td><%= egreso.monto %></td>
+    <td><%= egreso.tipo_egreso.descripcion %></td>
+    <td><%= link_to 'Show', egreso %></td>
+    <td><%= link_to 'Edit', edit_egreso_path(egreso) %></td>
+    <td><%= link_to 'Destroy', egreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Egreso', new_egreso_path %>

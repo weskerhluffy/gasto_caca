@@ -1,0 +1,23 @@
+<h1>Listing tipo_egresos</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_egresos.each do |tipo_egreso| %>
+  <tr>
+    <td><%= tipo_egreso.descripcion %></td>
+    <td><%= link_to 'Show', tipo_egreso %></td>
+    <td><%= link_to 'Edit', edit_tipo_egreso_path(tipo_egreso) %></td>
+    <td><%= link_to 'Destroy', tipo_egreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo egreso', new_tipo_egreso_path %>

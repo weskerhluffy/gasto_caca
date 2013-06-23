@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descripcion: MyText
+  aplicacion: 2013-06-23 02:32:49
+  monto: 
+
+two:
+  descripcion: MyText
+  aplicacion: 2013-06-23 02:32:49
+  monto: 

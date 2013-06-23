@@ -1,0 +1,23 @@
+<h1>Listing tipo_ingresos</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_ingresos.each do |tipo_ingreso| %>
+  <tr>
+    <td><%= tipo_ingreso.descripcion %></td>
+    <td><%= link_to 'Show', tipo_ingreso %></td>
+    <td><%= link_to 'Edit', edit_tipo_ingreso_path(tipo_ingreso) %></td>
+    <td><%= link_to 'Destroy', tipo_ingreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo ingreso', new_tipo_ingreso_path %>
