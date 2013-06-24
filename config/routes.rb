@@ -1,4 +1,10 @@
 GastoCaca::Application.routes.draw do
+  resources :periodos
+
+
+  resources :aplicacion_periodicas
+
+
   resources :deudas
 
 

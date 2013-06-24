@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Periodo:</b>
+  <%= @aplicacion_periodica.periodo.descripcion %>
+</p>
+
+<p>
+  <b>Monto:</b>
+  <%= @aplicacion_periodica.monto %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @aplicacion_periodica.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_aplicacion_periodica_path(@aplicacion_periodica) %> |
+<%= link_to 'Back', aplicacion_periodicas_path %>

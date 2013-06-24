@@ -23,6 +23,13 @@
   <b>Deudas:</b>
   <%= join_deudas(@egreso) %>
 </p>
+<% if @egreso.aplicacion_periodica.present? %>
+	<p>
+  		<b>Gasto periodico:</b>
+  		<%= @egreso.aplicacion_periodica.descripcion %>
+	</p>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_egreso_path(@egreso) %> |

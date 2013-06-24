@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Periodo.delete_all
+Periodo.create([
+        { descripcion: 'Dias' },
+        { descripcion: 'Semanas' },
+        { descripcion: 'Meses' },
+        { descripcion: 'Años' }
+])

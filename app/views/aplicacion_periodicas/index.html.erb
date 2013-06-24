@@ -1,0 +1,27 @@
+<h1>Listing aplicacion_periodicas</h1>
+
+<table>
+  <tr>
+    <th>Periodo</th>
+    <th>Monto</th>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aplicacion_periodicas.each do |aplicacion_periodica| %>
+  <tr>
+    <td><%= aplicacion_periodica.periodo.descripcion %></td>
+    <td><%= aplicacion_periodica.monto %></td>
+    <td><%= aplicacion_periodica.descripcion %></td>
+    <td><%= link_to 'Show', aplicacion_periodica %></td>
+    <td><%= link_to 'Edit', edit_aplicacion_periodica_path(aplicacion_periodica) %></td>
+    <td><%= link_to 'Destroy', aplicacion_periodica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Aplicacion periodica', new_aplicacion_periodica_path %>

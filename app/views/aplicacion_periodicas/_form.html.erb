@@ -1,0 +1,29 @@
+<%= form_for(@aplicacion_periodica) do |f| %>
+  <% if @aplicacion_periodica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aplicacion_periodica.errors.count, "error") %> prohibited this aplicacion_periodica from being saved:</h2>
+
+      <ul>
+      <% @aplicacion_periodica.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :periodo %><br />
+    <%= f.collection_select(:periodo_id, Periodo.all, :id, :descripcion) %>
+  </div>
+  <div class="field">
+    <%= f.label :monto %><br />
+    <%= f.text_field :monto %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

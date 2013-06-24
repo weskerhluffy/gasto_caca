@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  periodo: 
+  monto: 9.99
+  descripcion: MyText
+
+two:
+  periodo: 
+  monto: 9.99
+  descripcion: MyText

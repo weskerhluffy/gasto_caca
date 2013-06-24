@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623211328) do
+ActiveRecord::Schema.define(:version => 20130624055925) do
+
+  create_table "aplicacion_periodicas", :force => true do |t|
+    t.integer  "periodo_id"
+    t.decimal  "monto"
+    t.text     "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "aplicacion_periodicas", ["periodo_id"], :name => "index_aplicacion_periodicas_on_periodo_id"
 
   create_table "creditos", :force => true do |t|
     t.text     "descripcion"
@@ -60,6 +70,12 @@ ActiveRecord::Schema.define(:version => 20130623211328) do
   create_table "pago_deudas", :id => false, :force => true do |t|
     t.integer "deuda_id"
     t.integer "egreso_id"
+  end
+
+  create_table "periodos", :force => true do |t|
+    t.text     "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "tipo_egresos", :force => true do |t|

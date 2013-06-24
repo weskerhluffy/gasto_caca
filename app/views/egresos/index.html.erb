@@ -7,6 +7,7 @@
     <th>Monto</th>
     <th>Tipo egreso</th>
     <th>Creditos</th>
+    <th>Gasto periodico</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,11 @@
     <td><%= egreso.monto %></td>
     <td><%= egreso.tipo_egreso.descripcion %></td>
     <td><%= join_deudas(egreso) %></td>
+	<td>
+    	<% if egreso.aplicacion_periodica.present? %>
+  			<%= egreso.aplicacion_periodica.descripcion %>
+		<% end %>
+	</td>
     <td><%= link_to 'Show', egreso %></td>
     <td><%= link_to 'Edit', edit_egreso_path(egreso) %></td>
     <td><%= link_to 'Destroy', egreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
