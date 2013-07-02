@@ -19,7 +19,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+#  adapter: mysql
+  adapter: mysql2
+#  adapter: ruby-mysql
+  encoding: utf8
+  database: gatos_caca
   pool: 5
-  timeout: 5000
+  username: ernesto
+  password: 3rn3st0
+  socket: /tmp/mysql.sock
