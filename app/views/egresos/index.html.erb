@@ -6,6 +6,7 @@
     <th>Aplicacion</th>
     <th>Monto</th>
     <th>Tipo egreso</th>
+    <th>Medio de pago</th>
     <th>Creditos</th>
     <th>Gasto periodico</th>
     <th></th>
@@ -19,6 +20,7 @@
     <td><%= egreso.aplicacion %></td>
     <td><%= egreso.monto %></td>
     <td><%= egreso.tipo_egreso.descripcion %></td>
+    <td><%= egreso.tipo_ingreso.descripcion %></td>
     <td><%= join_deudas(egreso) %></td>
 	<td>
     	<% if egreso.aplicacion_periodica.present? %>

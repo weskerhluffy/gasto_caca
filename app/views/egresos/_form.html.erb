@@ -28,6 +28,10 @@
     <%= f.collection_select(:tipo_egreso_id, TipoEgreso.all, :id, :descripcion) %>
   </div>
   <div class="field">
+    <%= f.label :tipo_ingreso, "Medio de pago" %><br />
+    <%= f.collection_select(:tipo_ingreso_id, TipoIngreso.all, :id, :descripcion) %>
+  </div>
+  <div class="field">
     <%= f.label :deuda %><br />
     <% for deuda in Deuda.find(:all) %>
 		<div>

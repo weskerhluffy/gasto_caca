@@ -20,6 +20,10 @@
   <%= @egreso.tipo_egreso.descripcion %>
 </p>
 <p>
+  <b>Medio de pago:</b>
+  <%= @egreso.tipo_ingreso.descripcion %>
+</p>
+<p>
   <b>Deudas:</b>
   <%= join_deudas(@egreso) %>
 </p>
