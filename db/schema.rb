@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20130624055925) do
 
   create_table "aplicacion_periodicas", :force => true do |t|
     t.integer  "periodo_id"
-    t.decimal  "monto"
+    t.decimal  "monto",       :precision => 10, :scale => 0
     t.text     "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   add_index "aplicacion_periodicas", ["periodo_id"], :name => "index_aplicacion_periodicas_on_periodo_id"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(:version => 20130624055925) do
   end
 
   create_table "deudas", :force => true do |t|
-    t.decimal  "monto"
+    t.decimal  "monto",       :precision => 10, :scale => 0
     t.datetime "contraido"
     t.text     "descripcion"
     t.integer  "credito_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   add_index "deudas", ["credito_id"], :name => "index_deudas_on_credito_id"
@@ -48,21 +48,25 @@ ActiveRecord::Schema.define(:version => 20130624055925) do
   create_table "egresos", :force => true do |t|
     t.text     "descripcion"
     t.datetime "aplicacion"
-    t.decimal  "monto"
+    t.decimal  "monto",                   :precision => 10, :scale => 4
     t.integer  "tipo_egreso_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "aplicacion_periodica_id"
+    t.integer  "tipo_ingreso_id"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
   end
 
+  add_index "egresos", ["aplicacion_periodica_id"], :name => "index_egresos_on_aplicacion_periodica_id"
   add_index "egresos", ["tipo_egreso_id"], :name => "index_egresos_on_tipo_egreso_id"
+  add_index "egresos", ["tipo_ingreso_id"], :name => "index_egresos_on_tipo_ingreso_id"
 
   create_table "ingresos", :force => true do |t|
     t.text     "descripcion"
     t.datetime "aplicacion"
-    t.decimal  "monto"
+    t.decimal  "monto",           :precision => 10, :scale => 0
     t.integer  "tipo_ingreso_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "ingresos", ["tipo_ingreso_id"], :name => "index_ingresos_on_tipo_ingreso_id"

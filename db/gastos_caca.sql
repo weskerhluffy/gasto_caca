@@ -131,10 +131,11 @@ CREATE TABLE `egresos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` text COLLATE utf8_unicode_ci,
   `aplicacion` datetime DEFAULT NULL,
-  `monto` decimal(10,0) DEFAULT NULL,
+  `monto` decimal(10,4) DEFAULT NULL,
   `tipo_egreso_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `tipo_ingreso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_egresos_on_tipo_egreso_id` (`tipo_egreso_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -146,7 +147,7 @@ CREATE TABLE `egresos` (
 
 LOCK TABLES `egresos` WRITE;
 /*!40000 ALTER TABLE `egresos` DISABLE KEYS */;
-INSERT INTO `egresos` VALUES (1,'papas','2013-06-25 05:54:00',8,2,'2013-06-25 05:54:43','2013-06-25 05:54:43'),(2,'tortillas','2013-06-25 05:54:00',11,2,'2013-06-25 05:55:02','2013-06-25 05:55:02'),(3,'salchichas','2013-06-25 05:55:00',15,2,'2013-06-25 05:55:22','2013-06-25 05:55:22'),(4,'leche','2013-06-25 05:55:00',24,2,'2013-06-25 05:55:56','2013-06-25 05:55:56'),(5,'camion','2013-06-25 05:56:00',24,1,'2013-06-25 05:56:41','2013-06-25 05:56:41');
+INSERT INTO `egresos` VALUES (1,'papas','2013-06-25 05:54:00',8.0000,2,'2013-06-25 05:54:43','2013-06-25 05:54:43',2),(2,'tortillas','2013-06-25 05:54:00',11.0000,2,'2013-06-25 05:55:02','2013-06-25 05:55:02',2),(3,'salchichas','2013-06-25 05:55:00',15.0000,2,'2013-06-25 05:55:22','2013-06-25 05:55:22',2),(4,'leche','2013-06-25 05:55:00',24.0000,2,'2013-06-25 05:55:56','2013-06-25 05:55:56',2),(5,'camion','2013-06-25 05:56:00',24.5000,1,'2013-06-25 05:56:41','2013-07-02 09:27:28',2);
 /*!40000 ALTER TABLE `egresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-02  3:08:55
+-- Dump completed on 2013-07-02  4:29:53
