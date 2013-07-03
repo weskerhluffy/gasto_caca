@@ -3,6 +3,7 @@ class EgresosController < ApplicationController
   # GET /egresos.json
   def index
     @egresos = Egreso.all
+    logger.debug "mierdaaaaaaaaaaaaa"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +41,11 @@ class EgresosController < ApplicationController
   # POST /egresos
   # POST /egresos.json
   def create
+    ingreso_asociado=nil
     @egreso = Egreso.new(params[:egreso])
+    tipo_ingreso_conversion=params[:tipo_ingreso_conversion]
+    
+    logger.debug "la puta madre #{tipo_ingreso_conversion}"
 
     respond_to do |format|
       if @egreso.save
@@ -49,6 +54,16 @@ class EgresosController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @egreso.errors, status: :unprocessable_entity }
+      end
+    end
+    unless tipo_ingreso_conversion.nil? || tipo_ingreso_conversion == "" || tipo_ingreso_conversion.to_i<1
+      ingreso_asociado=Ingreso.new
+      ingreso_asociado.aplicacion=@egreso.aplicacion
+      ingreso_asociado.descripcion=@egreso.descripcion
+      ingreso_asociado.monto=@egreso.monto
+      ingreso_asociado.tipo_ingreso_id=tipo_ingreso_conversion.to_i
+      unless ingreso_asociado.save
+        format.html { render action: "new" }
       end
     end
   end
