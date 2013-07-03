@@ -26,6 +26,7 @@ class EgresosController < ApplicationController
   # GET /egresos/new.json
   def new
     @egreso = Egreso.new
+    @tipo_ingreso_conversion=nil
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,11 @@ class EgresosController < ApplicationController
   # GET /egresos/1/edit
   def edit
     @egreso = Egreso.find(params[:id])
+    if (@egreso.ingresos.blank?)
+      @tipo_ingreso_conversion=nil
+    else
+      @tipo_ingreso_conversion=@egreso.ingresos[0].tipo_ingreso_id
+    end
   end
 
   # POST /egresos
@@ -43,9 +49,9 @@ class EgresosController < ApplicationController
   def create
     ingreso_asociado=nil
     @egreso = Egreso.new(params[:egreso])
-    tipo_ingreso_conversion=params[:tipo_ingreso_conversion]
+    @tipo_ingreso_conversion=params[:tipo_ingreso_conversion]
     
-    logger.debug "la puta madre #{tipo_ingreso_conversion}"
+    logger.debug "la puta madre #{@tipo_ingreso_conversion}"
 
     respond_to do |format|
       if @egreso.save
@@ -56,12 +62,13 @@ class EgresosController < ApplicationController
         format.json { render json: @egreso.errors, status: :unprocessable_entity }
       end
     end
-    unless tipo_ingreso_conversion.nil? || tipo_ingreso_conversion == "" || tipo_ingreso_conversion.to_i<1
+    unless @tipo_ingreso_conversion.nil? || @tipo_ingreso_conversion == "" || @tipo_ingreso_conversion.to_i<1
       ingreso_asociado=Ingreso.new
       ingreso_asociado.aplicacion=@egreso.aplicacion
       ingreso_asociado.descripcion=@egreso.descripcion
       ingreso_asociado.monto=@egreso.monto
-      ingreso_asociado.tipo_ingreso_id=tipo_ingreso_conversion.to_i
+      ingreso_asociado.egreso_id=@egreso.id
+      ingreso_asociado.tipo_ingreso_id=@tipo_ingreso_conversion.to_i
       unless ingreso_asociado.save
         format.html { render action: "new" }
       end
@@ -72,6 +79,8 @@ class EgresosController < ApplicationController
   # PUT /egresos/1.json
   def update
     @egreso = Egreso.find(params[:id])
+    @tipo_ingreso_conversion=params[:tipo_ingreso_conversion]
+    logger.debug "el nuevo tipo de ingreso a convertir shit #{@tipo_ingreso_conversion}"
 
     respond_to do |format|
       if @egreso.update_attributes(params[:egreso])
@@ -80,6 +89,22 @@ class EgresosController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @egreso.errors, status: :unprocessable_entity }
+      end
+    end
+    unless (@egreso.ingresos.blank?)
+      logger.debug "mandando a la verga anterior ingreso asociado #{@egreso.ingresos[0].tipo_ingreso_id}"
+      @egreso.ingresos[0].destroy
+    end
+    unless @tipo_ingreso_conversion.nil? || @tipo_ingreso_conversion == "" || @tipo_ingreso_conversion.to_i<1
+      logger.debug "creando nuevo ingreso asociado #{@tipo_ingreso_conversion}"
+      ingreso_asociado=Ingreso.new
+      ingreso_asociado.aplicacion=@egreso.aplicacion
+      ingreso_asociado.descripcion=@egreso.descripcion
+      ingreso_asociado.monto=@egreso.monto
+      ingreso_asociado.egreso_id=@egreso.id
+      ingreso_asociado.tipo_ingreso_id=@tipo_ingreso_conversion.to_i
+      unless ingreso_asociado.save
+        format.html { render action: "new" }
       end
     end
   end

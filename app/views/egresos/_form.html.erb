@@ -41,7 +41,8 @@
 <div class="field">
 	<%= label_tag "tipo_ingreso_conversion", "Conversion a ingreso" %>
 	<br />
-	<%= select_tag "tipo_ingreso_conversion", options_from_collection_for_select(TipoIngreso.all, "id", "descripcion"), :prompt => "No tiene asociado ingreso alguno" %>
+	<%= select_tag "tipo_ingreso_conversion", options_from_collection_for_select(TipoIngreso.all, "id", "descripcion",@tipo_ingreso_conversion), 
+	:prompt => "No tiene asociado ingreso alguno" %>
 </div>
 <div class="field">
 	<%= f.label :deuda %>
