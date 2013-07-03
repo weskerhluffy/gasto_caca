@@ -5,6 +5,7 @@
     <th>Periodo</th>
     <th>Monto</th>
     <th>Descripcion</th>
+    <th>Deuda</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,11 @@
     <td><%= aplicacion_periodica.periodo.descripcion %></td>
     <td><%= aplicacion_periodica.monto %></td>
     <td><%= aplicacion_periodica.descripcion %></td>
+    <td>
+		<% if aplicacion_periodica.deuda.present? %>
+			<%= aplicacion_periodica.deuda.descripcion %>
+		<% end %>
+    </td>
     <td><%= link_to 'Show', aplicacion_periodica %></td>
     <td><%= link_to 'Edit', edit_aplicacion_periodica_path(aplicacion_periodica) %></td>
     <td><%= link_to 'Destroy', aplicacion_periodica, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#TODO: considerar que un egreso c puede convertir en un ingreso y q ay gastos periodicos ligados a deudas.
 Periodo.delete_all
 Periodo.create([
         { descripcion: 'Dias' },

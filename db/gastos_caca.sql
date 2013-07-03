@@ -29,9 +29,10 @@ CREATE TABLE `aplicacion_periodicas` (
   `descripcion` text COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `deuda_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_aplicacion_periodicas_on_periodo_id` (`periodo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `aplicacion_periodicas` (
 
 LOCK TABLES `aplicacion_periodicas` WRITE;
 /*!40000 ALTER TABLE `aplicacion_periodicas` DISABLE KEYS */;
+INSERT INTO `aplicacion_periodicas` VALUES (1,3,800,'pago mensual lavadora','2013-07-03 08:47:29','2013-07-03 08:47:29','1'),(3,1,4100,'renta','2013-07-03 08:50:05','2013-07-03 08:50:05','');
 /*!40000 ALTER TABLE `aplicacion_periodicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +88,7 @@ CREATE TABLE `deudas` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_deudas_on_credito_id` (`credito_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +97,7 @@ CREATE TABLE `deudas` (
 
 LOCK TABLES `deudas` WRITE;
 /*!40000 ALTER TABLE `deudas` DISABLE KEYS */;
+INSERT INTO `deudas` VALUES (1,8000,'2013-07-03 03:39:00','lavadora',1,'2013-07-03 08:40:13','2013-07-03 08:40:13');
 /*!40000 ALTER TABLE `deudas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +141,7 @@ CREATE TABLE `egresos` (
   `tipo_ingreso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_egresos_on_tipo_egreso_id` (`tipo_egreso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +150,7 @@ CREATE TABLE `egresos` (
 
 LOCK TABLES `egresos` WRITE;
 /*!40000 ALTER TABLE `egresos` DISABLE KEYS */;
-INSERT INTO `egresos` VALUES (1,'papas','2013-06-25 05:54:00',8.0000,2,'2013-06-25 05:54:43','2013-06-25 05:54:43',2),(2,'tortillas','2013-06-25 05:54:00',11.0000,2,'2013-06-25 05:55:02','2013-06-25 05:55:02',2),(3,'salchichas','2013-06-25 05:55:00',15.0000,2,'2013-06-25 05:55:22','2013-06-25 05:55:22',2),(4,'leche','2013-06-25 05:55:00',24.0000,2,'2013-06-25 05:55:56','2013-06-25 05:55:56',2),(5,'camion','2013-06-25 05:56:00',24.5000,1,'2013-06-25 05:56:41','2013-07-02 09:27:28',2);
+INSERT INTO `egresos` VALUES (1,'papas','2013-06-25 05:54:00',8.0000,2,'2013-06-25 05:54:43','2013-06-25 05:54:43',2),(2,'tortillas','2013-06-25 05:54:00',11.0000,2,'2013-06-25 05:55:02','2013-06-25 05:55:02',2),(3,'salchichas','2013-06-25 05:55:00',15.0000,2,'2013-06-25 05:55:22','2013-06-25 05:55:22',2),(4,'leche','2013-06-25 05:55:00',24.0000,2,'2013-06-25 05:55:56','2013-06-25 05:55:56',2),(5,'camion','2013-06-25 05:56:00',24.5000,1,'2013-06-25 05:56:41','2013-07-02 09:27:28',2),(6,'benzal','2013-06-26 19:05:00',79.5000,5,'2013-07-02 09:31:00','2013-07-02 09:31:00',3);
 /*!40000 ALTER TABLE `egresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,9 +169,10 @@ CREATE TABLE `ingresos` (
   `tipo_ingreso_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `egreso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_ingresos_on_tipo_ingreso_id` (`tipo_ingreso_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,6 +181,7 @@ CREATE TABLE `ingresos` (
 
 LOCK TABLES `ingresos` WRITE;
 /*!40000 ALTER TABLE `ingresos` DISABLE KEYS */;
+INSERT INTO `ingresos` VALUES (12,'da2','2013-07-03 08:08:00',12312,3,'2013-07-03 08:33:08','2013-07-03 08:33:08',13);
 /*!40000 ALTER TABLE `ingresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-02  4:29:53
+-- Dump completed on 2013-07-03  3:52:50

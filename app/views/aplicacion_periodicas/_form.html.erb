@@ -23,6 +23,10 @@
     <%= f.label :descripcion %><br />
     <%= f.text_area :descripcion %>
   </div>
+  <div class="field">
+    <%= f.label :deuda %><br />
+    <%= f.collection_select(:deuda_id, Deuda.all, :id, :descripcion,:prompt=>"Seleccione la deuda asociada, si es que aplica." )%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

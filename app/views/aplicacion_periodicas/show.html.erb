@@ -15,6 +15,12 @@
   <%= @aplicacion_periodica.descripcion %>
 </p>
 
+		<% if @aplicacion_periodica.deuda.present? %>
+<p>
+  <b>Deuda:</b>
+			<%= @aplicacion_periodica.deuda.descripcion %>
+</p>
+		<% end %>
 
 <%= link_to 'Edit', edit_aplicacion_periodica_path(@aplicacion_periodica) %> |
 <%= link_to 'Back', aplicacion_periodicas_path %>
