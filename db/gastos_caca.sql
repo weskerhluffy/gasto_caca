@@ -133,15 +133,15 @@ DROP TABLE IF EXISTS `egresos`;
 CREATE TABLE `egresos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` text COLLATE utf8_unicode_ci,
-  `aplicacion` datetime DEFAULT NULL,
   `monto` decimal(10,4) DEFAULT NULL,
   `tipo_egreso_id` int(11) DEFAULT NULL,
+  `aplicacion` datetime DEFAULT NULL,
+  `tipo_ingreso_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `tipo_ingreso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_egresos_on_tipo_egreso_id` (`tipo_egreso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `egresos` (
 
 LOCK TABLES `egresos` WRITE;
 /*!40000 ALTER TABLE `egresos` DISABLE KEYS */;
-INSERT INTO `egresos` VALUES (1,'papas','2013-06-25 05:54:00',8.0000,2,'2013-06-25 05:54:43','2013-06-25 05:54:43',2),(2,'tortillas','2013-06-25 05:54:00',11.0000,2,'2013-06-25 05:55:02','2013-06-25 05:55:02',2),(3,'salchichas','2013-06-25 05:55:00',15.0000,2,'2013-06-25 05:55:22','2013-06-25 05:55:22',2),(4,'leche','2013-06-25 05:55:00',24.0000,2,'2013-06-25 05:55:56','2013-06-25 05:55:56',2),(5,'camion','2013-06-25 05:56:00',24.5000,1,'2013-06-25 05:56:41','2013-07-02 09:27:28',2),(6,'benzal','2013-06-26 19:05:00',79.5000,5,'2013-07-02 09:31:00','2013-07-02 09:31:00',3);
+INSERT INTO `egresos` VALUES (1,'papas',8.0000,2,'2013-06-25 05:54:00',2,'2013-06-25 05:54:43','2013-06-25 05:54:43'),(2,'tortillas',11.0000,2,'2013-06-25 05:54:00',2,'2013-06-25 05:55:02','2013-06-25 05:55:02'),(3,'salchichas',15.0000,2,'2013-06-25 05:55:00',2,'2013-06-25 05:55:22','2013-06-25 05:55:22'),(4,'leche',24.0000,2,'2013-06-25 05:55:00',2,'2013-06-25 05:55:56','2013-06-25 05:55:56'),(5,'camion',24.5000,1,'2013-06-25 05:56:00',2,'2013-06-25 05:56:41','2013-07-02 09:27:28'),(6,'benzal',79.5000,5,'2013-06-26 19:05:00',3,'2013-07-02 09:31:00','2013-07-02 09:31:00'),(78,'sabritas',5.5000,2,'2013-06-30 00:00:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(79,'pasta fideo 1 p',3.9000,2,'2013-06-30 00:00:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(80,'pasta fideo 1 p',3.6000,2,'2013-06-30 00:00:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(81,'limon .180',2.2500,2,'2013-06-30 00:00:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(82,'manzana 1 p',3.6100,2,'2013-06-30 00:00:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(83,'crema',17.0000,2,'2013-06-26 19:56:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(84,'aceite 2 p',37.6000,2,'2013-06-26 19:56:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(85,'palomitas 2 p',11.0000,2,'2013-06-26 19:56:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(86,'boing 1 l',11.9000,2,'2013-06-26 19:56:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(87,'frijol',12.5000,2,'2013-06-26 19:56:00',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(88,'cebolla .245',2.6700,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(89,'cilantro',5.5000,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(90,'magnum almendras',22.0000,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(91,'kiwi 2 p',6.9000,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(92,'boing .5 l 2 p',13.0000,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(93,'zanahoria 4 p',1.5800,2,'2013-06-30 15:07:17',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(109,'retiro',1000.0000,5,'2013-06-30 15:07:17',1,'2013-07-04 00:11:00','2013-07-04 00:11:00');
 /*!40000 ALTER TABLE `egresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,15 +164,15 @@ DROP TABLE IF EXISTS `ingresos`;
 CREATE TABLE `ingresos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` text COLLATE utf8_unicode_ci,
-  `aplicacion` datetime DEFAULT NULL,
   `monto` decimal(10,0) DEFAULT NULL,
+  `aplicacion` datetime DEFAULT NULL,
   `tipo_ingreso_id` int(11) DEFAULT NULL,
+  `egreso_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `egreso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_ingresos_on_tipo_ingreso_id` (`tipo_ingreso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `ingresos` (
 
 LOCK TABLES `ingresos` WRITE;
 /*!40000 ALTER TABLE `ingresos` DISABLE KEYS */;
-INSERT INTO `ingresos` VALUES (12,'da2','2013-07-03 08:08:00',12312,3,'2013-07-03 08:33:08','2013-07-03 08:33:08',13);
+INSERT INTO `ingresos` VALUES (13,'retiro',1000,'2013-06-30 15:07:17',2,109,'2013-07-04 00:11:00','2013-07-04 00:11:00');
 /*!40000 ALTER TABLE `ingresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-03  3:52:50
+-- Dump completed on 2013-07-04  0:12:41
