@@ -164,7 +164,7 @@ DROP TABLE IF EXISTS `ingresos`;
 CREATE TABLE `ingresos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` text COLLATE utf8_unicode_ci,
-  `monto` decimal(10,0) DEFAULT NULL,
+  `monto` decimal(10,4) DEFAULT NULL,
   `aplicacion` datetime DEFAULT NULL,
   `tipo_ingreso_id` int(11) DEFAULT NULL,
   `egreso_id` int(11) DEFAULT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE `ingresos` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_ingresos_on_tipo_ingreso_id` (`tipo_ingreso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `ingresos` (
 
 LOCK TABLES `ingresos` WRITE;
 /*!40000 ALTER TABLE `ingresos` DISABLE KEYS */;
-INSERT INTO `ingresos` VALUES (13,'retiro',1000,'2013-06-30 15:07:17',2,109,'2013-07-04 00:11:00','2013-07-04 00:11:00');
+INSERT INTO `ingresos` VALUES (13,'retiro',1000.0000,'2013-06-30 15:07:17',2,109,'2013-07-04 00:11:00','2013-07-04 00:11:00'),(14,'pago',2904.5700,'2013-06-13 05:18:00',3,NULL,'2013-07-04 05:19:12','2013-07-04 05:25:02');
 /*!40000 ALTER TABLE `ingresos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-04  0:12:41
+-- Dump completed on 2013-07-04  0:25:27

@@ -3,7 +3,7 @@ class CreateIngresos < ActiveRecord::Migration
     create_table :ingresos do |t|
       t.text :descripcion
       t.timestamp :aplicacion
-      t.decimal :monto
+      t.decimal :monto, :precision => 10, :scale => 4
       t.references :tipo_ingreso
 
       t.timestamps
