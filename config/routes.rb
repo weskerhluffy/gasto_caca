@@ -22,6 +22,11 @@ GastoCaca::Application.routes.draw do
 
   resources :tipo_ingresos
   
+#  resources :upload
+  get '/upload', to: 'upload#index'
+
+  post '/upload', to: 'upload#uploadFile'
+  
   root :to => "home#index"
 
 
