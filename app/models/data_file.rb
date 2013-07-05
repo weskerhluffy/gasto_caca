@@ -10,6 +10,6 @@ class DataFile < ActiveRecord::Base
     command_load_file="./script/carga_caca.sh #{path}"
     logger.debug "command 2 load #{command_load_file}"
     load_result=`#{command_load_file} 2>&1`
-    logger.debug "the result of loading #{}"
+    logger.debug "the result of loading #{load_result}"
   end
 end
