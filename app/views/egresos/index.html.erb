@@ -1,6 +1,7 @@
 <h1>Listing egresos</h1>
 
-<table>
+<table id="egresosTbl">
+	<thead>
   <tr>
     <th>Descripcion</th>
     <th>Aplicacion</th>
@@ -13,7 +14,9 @@
     <th></th>
     <th></th>
   </tr>
+	<thead>
 
+<tbody>
 <% @egresos.each do |egreso| %>
   <tr>
     <td><%= egreso.descripcion %></td>
@@ -32,6 +35,7 @@
     <td><%= link_to 'Destroy', egreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

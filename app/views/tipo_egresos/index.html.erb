@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Indice</th>
     <th>Descripcion</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @tipo_egresos.each do |tipo_egreso| %>
   <tr>
+    <td><%= tipo_egreso.id%></td>
     <td><%= tipo_egreso.descripcion %></td>
     <td><%= link_to 'Show', tipo_egreso %></td>
     <td><%= link_to 'Edit', edit_tipo_egreso_path(tipo_egreso) %></td>

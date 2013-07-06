@@ -39,3 +39,6 @@ gem "mysql2"
 
 # To use debugger
 # gem 'debugger'
+#gem 'gchart'
+gem 'googlecharts' , :require => "gchart"
+#gem 'google-charts-on-rails'

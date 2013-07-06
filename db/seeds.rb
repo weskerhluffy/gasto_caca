@@ -18,14 +18,16 @@ TipoEgreso.create([
         { descripcion: 'Comida' },
         { descripcion: 'Medico' },
         { descripcion: 'Escolar' },
-        { descripcion: 'Miscelaneo' }
+        { descripcion: 'Miscelaneo' },
+        { descripcion: 'Ahorro' }
 ])
 TipoIngreso.delete_all
 TipoIngreso.create([
         { descripcion: 'Banco' },
         { descripcion: 'Efectivo' },
         { descripcion: 'Si vale' },
-        { descripcion: 'Prestamo' }
+        { descripcion: 'Prestamo' },
+        { descripcion: 'Ahorro' }
 ])
 Credito.delete_all
 Credito.create([

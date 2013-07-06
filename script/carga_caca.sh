@@ -6,6 +6,7 @@ base="gatos_caca"
 script_basedir=$(dirname $0)
 file_basename=$(basename $1|cut -d. -f 1)
 
+export LC_CTYPE=C
 /Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to csv $1 --outdir /tmp
 perl -i -p -e "s/\r/\n/g" /tmp/$file_basename.csv
 sed "/[0-9]$/d" /tmp/$file_basename.csv | sed "s/,$//" > /tmp/egresos.csv
