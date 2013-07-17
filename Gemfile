@@ -42,3 +42,5 @@ gem "mysql2"
 #gem 'gchart'
 gem 'googlecharts' , :require => "gchart"
 #gem 'google-charts-on-rails'
+gem 'rmagick'
+gem 'gruff'

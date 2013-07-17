@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require datatables/js/jquery.dataTables.js
 //= require egresos
+//= require ingresos

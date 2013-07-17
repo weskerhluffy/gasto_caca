@@ -1,16 +1,18 @@
 <h1>Listing ingresos</h1>
 
-<table>
+<table id="ingresosTbl">
+	<thead>
   <tr>
-    <th>Descripcion</th>
-    <th>Aplicacion</th>
+    <th class="descripcion">Descripcion</th>
+    <th class="tiempo">Aplicacion</th>
     <th>Monto</th>
     <th>Tipo ingreso</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @ingresos.each do |ingreso| %>
   <tr>
     <td><%= ingreso.descripcion %></td>
@@ -28,6 +30,7 @@
 	<% end %>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

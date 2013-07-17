@@ -1,3 +1,19 @@
 // Place all the styles related to the Egresos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table {
+  width: 100%;
+  border: 1px solid #000;
+}
+td
+{
+border-color:#cccccc; /*grey*/
+border-style:solid; 
+border-width:1px;
+}
+th.descripcion {
+  width: 15%
+}
+th.tiempo{
+  width: 15%
+}
