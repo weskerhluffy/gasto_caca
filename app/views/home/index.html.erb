@@ -1,10 +1,75 @@
 <h1>Fuck!</h1>
-<br />
-<%= image_tag @bar %>
-<br />
+<h4>
+Totales disponibles.
+</h4>
+<% acumulador=0 %>
+<table>
+	<% @totales_disponibles.each do |fila|%>
+		<tr>
+			<td><%= fila[0] %></td>
+			<td align="right"><%= formatear_dinero(fila[1]) %></td>
+			<% if ! fila[1].blank? %>
+				<% acumulador+=fila[1] %>
+			<% end %>
+		</tr>
+	<% end %>
+	<tr>
+		<td>
+			Total:
+		</td>
+		<td align="right">
+			<%= formatear_dinero(acumulador) %>
+		</td>
+	</tr>
+</table>
 
-<%= @totales.each{|o|} %>
-<br />
-<%= @totales[0][0] %>
-<%= @totales[0][1] %>
-<%= @totales[0][2] %>
+
+
+<h4>
+Totales egresos.
+</h4>
+<% acumulador=0 %>
+<table>
+	<% @totales_egresos.each do |fila|%>
+		<tr>
+			<td><%= fila[0] %></td>
+			<td align="right"><%= formatear_dinero(fila[1]) %></td>
+			<% if ! fila[1].blank? %>
+				<% acumulador+=fila[1] %>
+			<% end %>
+		</tr>
+	<% end %>
+	<tr>
+		<td>
+			Total:
+		</td>
+		<td align="right">
+			<%= formatear_dinero(acumulador) %>
+		</td>
+	</tr>
+</table>
+
+
+<h4>
+Totales netos.
+</h4>
+<table>
+<% @totales.each do |titulo, valor| %>
+	<tr>
+		<td><%= titulo %></td>
+		<td align="right"><%= valor %></td>
+	</tr>
+<% end %>
+</table>
+	
+<h4>
+Totales banco.
+</h4>
+<table>
+<% @totales_banco.each do |titulo, valor| %>
+	<tr>
+		<td><%= titulo %></td>
+		<td align="right"><%= valor %></td>
+	</tr>
+<% end %>
+</table>

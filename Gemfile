@@ -40,7 +40,7 @@ gem "mysql2"
 # To use debugger
 # gem 'debugger'
 #gem 'gchart'
-gem 'googlecharts' , :require => "gchart"
+#gem 'googlecharts' , :require => "gchart"
 #gem 'google-charts-on-rails'
-gem 'rmagick'
-gem 'gruff'
+#gem 'rmagick'
+#gem 'gruff'
