@@ -20,7 +20,7 @@ class QuerysComplejos < ActiveRecord::Base
           select sum(i.monto)
           -
           (
-            select sum(rd.monto)
+            select sum(rd.restante)
             from restante_deudas rd
           )
           from ingresos i
@@ -30,7 +30,7 @@ class QuerysComplejos < ActiveRecord::Base
           select sum(i.monto)
           -
           (
-            select sum(rd.monto)
+            select sum(rd.restante)
             from restante_deudas rd
           ) 
           from ingresos i
@@ -65,7 +65,8 @@ class QuerysComplejos < ActiveRecord::Base
       -
       (select sum(e.monto)
       from egresos e
-      where e.tipo_ingreso_id=ti.id) as monto
+      where e.tipo_ingreso_id=ti.id) 
+      as monto
       from tipo_ingresos ti
       having monto>0
       order by monto desc
@@ -113,7 +114,7 @@ class QuerysComplejos < ActiveRecord::Base
       )
       -
       (
-          select sum(rd.monto)
+          select sum(rd.restante)
           from restante_deudas rd
       ) as banco_neto
       from ingresos i

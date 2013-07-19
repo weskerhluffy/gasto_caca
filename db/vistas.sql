@@ -1,7 +1,7 @@
 create view restante_deudas
 as
 select
-d.*, 
+d.*,
 d.monto
 -
 (
