@@ -68,9 +68,9 @@ class QuerysComplejos < ActiveRecord::Base
       where e.tipo_ingreso_id=ti.id) 
       as monto
       from tipo_ingresos ti
-      having monto>0
       order by monto desc
     ")
+#      having monto>0
     return @totales_result
   end
   

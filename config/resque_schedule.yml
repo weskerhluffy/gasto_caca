@@ -1,0 +1,5 @@
+breakfast:
+  cron: "*/1 * * * *"
+  class: EgresosPeriodicos
+  args: 
+  description: caca

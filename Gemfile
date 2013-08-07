@@ -44,3 +44,5 @@ gem "mysql2"
 #gem 'google-charts-on-rails'
 #gem 'rmagick'
 #gem 'gruff'
+gem "resque"
+gem 'resque-scheduler'

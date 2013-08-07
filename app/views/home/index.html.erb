@@ -7,9 +7,11 @@ Totales disponibles.
 	<% @totales_disponibles.each do |fila|%>
 		<tr>
 			<td><%= fila[0] %></td>
-			<td align="right"><%= formatear_dinero(fila[1]) %></td>
 			<% if ! fila[1].blank? %>
+				<td align="right"><%= formatear_dinero(fila[1]) %></td>
 				<% acumulador+=fila[1] %>
+			<% else %>
+				<td align="right">0.00</td>
 			<% end %>
 		</tr>
 	<% end %>
