@@ -27,6 +27,16 @@
     <%= f.label :deuda %><br />
     <%= f.collection_select(:deuda_id, Deuda.all, :id, :descripcion,:prompt=>"Seleccione la deuda asociada, si es que aplica." )%>
   </div>
+  <div class="field">
+	<%= f.label :tipo_egreso, "Tipo de egreso" %>
+	<br />
+	<%= f.collection_select(:tipo_egreso_id, TipoEgreso.all, :id, :descripcion) %>
+  </div>
+  <div class="field">
+	<%= f.label :tipo_ingreso, "Medio de pago" %>
+	<br />
+	<%= f.collection_select(:tipo_ingreso_id, TipoIngreso.all, :id, :descripcion) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

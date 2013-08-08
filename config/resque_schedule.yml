@@ -1,5 +1,6 @@
 breakfast:
-  cron: "*/1 * * * *"
+  cron: "0 0 1 * *"
+#  cron: "*/1 * * * *"
   class: EgresosPeriodicos
-  args: 
+  args: 3
   description: caca

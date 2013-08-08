@@ -1,6 +1,6 @@
 class QuerysComplejos < ActiveRecord::Base
   def self.my_query
-    self.connection.execute("select * from egresos e join tipo_egresos te on (e.tipo_egreso_id=te.id) join tipo_ingresos ti on (e.tipo_ingreso_id=ti.id)")
+    self.connection.execute("select * from egresos_aplicados e join tipo_egresos te on (e.tipo_egreso_id=te.id) join tipo_ingresos ti on (e.tipo_ingreso_id=ti.id)")
   end
   def self.totales
     @totales=[]
@@ -8,7 +8,7 @@ class QuerysComplejos < ActiveRecord::Base
       select 
         (
           select sum(e.monto) 
-          from egresos e 
+          from egresos_aplicados e 
           where e.id not in 
           (
             select distinct i.egreso_id 
@@ -39,7 +39,7 @@ class QuerysComplejos < ActiveRecord::Base
         -
         (
           select sum(e.monto) 
-          from egresos e 
+          from egresos_aplicados e 
           where e.id not in 
           (
             select distinct i.egreso_id 
@@ -64,7 +64,7 @@ class QuerysComplejos < ActiveRecord::Base
       )
       -
       (select sum(e.monto)
-      from egresos e
+      from egresos_aplicados e
       where e.tipo_ingreso_id=ti.id) 
       as monto
       from tipo_ingresos ti
@@ -77,7 +77,7 @@ class QuerysComplejos < ActiveRecord::Base
   def self.totales_egresos
     @totales_result=self.connection.execute("
       select te.descripcion,sum(e.monto) monto
-      from egresos e
+      from egresos_aplicados e
       join tipo_egresos te
       on (e.tipo_egreso_id=te.id)
       where month(e.aplicacion)=month(now())
@@ -96,7 +96,7 @@ class QuerysComplejos < ActiveRecord::Base
       -
       (
           select sum(e.monto) 
-          from egresos e
+          from egresos_aplicados e
           where e.tipo_ingreso_id=1
           and e.tipo_egreso_id!=6
       ) as banco_fisico
@@ -109,7 +109,7 @@ class QuerysComplejos < ActiveRecord::Base
       -
       (
           select sum(e.monto) 
-          from egresos e
+          from egresos_aplicados e
           where e.tipo_ingreso_id=1
       )
       -

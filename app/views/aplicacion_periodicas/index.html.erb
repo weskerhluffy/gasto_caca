@@ -5,6 +5,8 @@
     <th>Periodo</th>
     <th>Monto</th>
     <th>Descripcion</th>
+    <th>Tipo de egreso</th>
+    <th>Medio de pago</th>
     <th>Deuda</th>
     <th></th>
     <th></th>
@@ -16,6 +18,8 @@
     <td><%= aplicacion_periodica.periodo.descripcion %></td>
     <td><%= aplicacion_periodica.monto %></td>
     <td><%= aplicacion_periodica.descripcion %></td>
+    <td><%= aplicacion_periodica.tipo_egreso.descripcion %></td>
+    <td><%= aplicacion_periodica.tipo_ingreso.descripcion %></td>
     <td>
 		<% if aplicacion_periodica.deuda.present? %>
 			<%= aplicacion_periodica.deuda.descripcion %>

@@ -20,7 +20,13 @@
 <% @egresos.each do |egreso| %>
   <tr>
     <td><%= egreso.descripcion %></td>
-    <td><%= egreso.aplicacion %></td>
+    <td>
+    	<% if egreso.aplicacion.present? %>
+	    	<%= egreso.aplicacion %>
+	    <% else %>
+	    	No ha sido aplicado
+		<% end %>
+    </td>
     <td><%= egreso.monto %></td>
     <td><%= egreso.tipo_egreso.descripcion %></td>
     <td><%= egreso.tipo_ingreso.descripcion %></td>

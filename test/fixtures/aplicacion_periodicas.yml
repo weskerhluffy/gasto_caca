@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  periodo: 
+  periodo_id: 1 
   monto: 9.99
-  descripcion: MyText
+  descripcion: MyTexta
+#  tipo_egreso_id: 8
+#  tipo_ingreso_id: 1
 
 two:
-  periodo: 
+  periodo_id: 1
   monto: 9.99
-  descripcion: MyText
+  descripcion: MyTextb
+#  tipo_egreso_id: 5
+ # tipo_ingreso_id: 1
