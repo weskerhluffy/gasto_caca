@@ -10,3 +10,4 @@ sleep 10
 rake resque:scheduler &
 COUNT=5 QUEUE=* rake resque:workers &
 echo "The IP to check this fucking shit http://0.0.0.0:5678/overview"
+resque-web &

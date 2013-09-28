@@ -33,7 +33,7 @@ my $csv = Text::CSV->new(
 );
 
 $connection    = ConnectToMySql("gatos_caca");
-$query_egresos = "insert into egresos values (NULL, ?, ?, ?, ?, ?, now(),now()) ";
+$query_egresos = "insert into egresos values (NULL, ?, ?, ?, ?, ?, now(),now(),NULL) ";
 $statement_egresos = $connection->prepare($query_egresos);
 $query_ingresos    =
 "insert into ingresos values (NULL, ?, ?, ?, ?, LAST_INSERT_ID(), now(),now()) ";

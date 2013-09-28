@@ -68,6 +68,7 @@ class QuerysComplejos < ActiveRecord::Base
       where e.tipo_ingreso_id=ti.id) 
       as monto
       from tipo_ingresos ti
+      where ti.id!=4
       order by monto desc
     ")
 #      having monto>0
