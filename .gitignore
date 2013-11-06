@@ -15,3 +15,11 @@
 /tmp
 
 *.xlsx
+
+upload/public/data/movimientos.pdf
+
+script/dump.rdb
+
+dump.rdb
+
+dump.rdb
