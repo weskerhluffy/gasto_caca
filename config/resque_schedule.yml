@@ -1,6 +1,7 @@
 egresos_periodicos_job:
-  cron: "0 0 1 * *"
+#  cron: "0 0 1 * *"
 #  cron: "*/1 * * * *"
+  cron: "0 */1 * * *"
   class: EgresosPeriodicos
   args: 3
   description: caca
