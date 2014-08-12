@@ -23,3 +23,4 @@ script/dump.rdb
 dump.rdb
 
 dump.rdb
+/Gemfile.lock
