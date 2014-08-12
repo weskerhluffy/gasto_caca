@@ -2,7 +2,10 @@ class EgresosController < ApplicationController
   # GET /egresos
   # GET /egresos.json
   def index
-    @egresos = Egreso.all
+#    @egresos = Egreso.all
+# XXX: http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/
+    @egresos = Egreso.filter({"recientes"=>true})
+#    @egresos = Egreso.recientes()
     logger.debug "mierdaaaaaaaaaaaaa"
 
     respond_to do |format|

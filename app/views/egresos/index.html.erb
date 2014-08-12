@@ -4,6 +4,7 @@
 	<thead>
   <tr>
     <th class="descripcion">Descripcion</th>
+    <th class>Referencia bancaria</th>
     <th class="tiempo">Aplicacion</th>
     <th>Monto</th>
     <th>Tipo egreso</th>
@@ -20,6 +21,7 @@
 <% @egresos.each do |egreso| %>
   <tr>
     <td><%= egreso.descripcion %></td>
+    <td><%= egreso.referencia_bancaria%></td>
     <td>
     	<% if egreso.aplicacion.present? %>
 	    	<%= egreso.aplicacion %>
