@@ -25,7 +25,12 @@
   </div>
   <div class="field">
     <%= f.label :credito %><br />
-    <%= f.collection_select(:credito_id, Credito.all, :id, :descripcion) %>
+    <%= f.collection_select(:credito_id, Credito.all, :id, :descripcion,{:include_blank => 'Nada de credito'}) %>
+  </div>
+ <!- XXX: http://stackoverflow.com/questions/3920296/rails-3-collection-select-understanding-prompt ->
+  <div class="field">
+    <%= f.label :deuda_original %><br />
+    <%= f.collection_select(:deuda_original_id, TotalesDeuda.activas, :id, :descripcion,{:include_blank => 'Ni madres'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

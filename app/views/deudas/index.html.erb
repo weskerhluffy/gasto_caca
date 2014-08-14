@@ -16,7 +16,17 @@
     <td><%= deuda.monto %></td>
     <td><%= deuda.contraido %></td>
     <td><%= deuda.descripcion %></td>
-    <td><%= deuda.credito.descripcion %></td>
+    <td>
+		<% if deuda.credito.present? %>
+   		 	<%= deuda.credito.descripcion %>
+   		<% else %>
+			<% if deuda.deuda_original.present? %>
+				La deuda original es <%= deuda.deuda_original.descripcion %> y su credito <%= deuda.deuda_original.credito.descripcion %>
+			<% else %>
+	   			No asociado con credito
+			<% end %>
+   		<% end %>
+    </td>
     <td><%= link_to 'Show', deuda %></td>
     <td><%= link_to 'Edit', edit_deuda_path(deuda) %></td>
     <td><%= link_to 'Destroy', deuda, method: :delete, data: { confirm: 'Are you sure?' } %></td>

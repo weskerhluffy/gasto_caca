@@ -21,7 +21,7 @@ class QuerysComplejos < ActiveRecord::Base
           -
           (
             select sum(rd.restante)
-            from restante_deudas rd
+            from totales_deudas rd
           )
           from ingresos i
           where i.egreso_id is null
@@ -31,7 +31,7 @@ class QuerysComplejos < ActiveRecord::Base
           -
           (
             select sum(rd.restante)
-            from restante_deudas rd
+            from totales_deudas rd
           ) 
           from ingresos i
           where i.egreso_id is null
@@ -116,7 +116,7 @@ class QuerysComplejos < ActiveRecord::Base
       -
       (
           select sum(rd.restante)
-          from restante_deudas rd
+          from totales_deudas rd
       ) as banco_neto
       from ingresos i
       where i.tipo_ingreso_id=1

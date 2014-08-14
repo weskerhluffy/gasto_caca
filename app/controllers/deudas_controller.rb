@@ -40,7 +40,16 @@ class DeudasController < ApplicationController
   # POST /deudas
   # POST /deudas.json
   def create
+    logger.debug("Creando calabaza aa #{params[:deuda][:deuda_original_id]}  #{params}")
     @deuda = Deuda.new(params[:deuda])
+    if(params[:deuda].has_key?(:deuda_original_id))
+      logger.debug("Se slecciono deuda original")
+      if(@deuda.credito.present?)
+        logger.debug("Estaba asociado con un credito")
+        @deuda.credito.deudas.delete(@deuda)
+      end
+      @deuda.credito_id=nil
+    end
 
     respond_to do |format|
       if @deuda.save
@@ -57,6 +66,15 @@ class DeudasController < ApplicationController
   # PUT /deudas/1.json
   def update
     @deuda = Deuda.find(params[:id])
+
+    if(params[:deuda].has_key?(:deuda_original_id))
+      logger.debug("Se slecciono deuda original")
+      if(@deuda.credito.present?)
+        logger.debug("Estaba asociado con un credito")
+        @deuda.credito.deudas.delete(@deuda)
+      end
+      @deuda.credito_id=nil
+    end
 
     respond_to do |format|
       if @deuda.update_attributes(params[:deuda])

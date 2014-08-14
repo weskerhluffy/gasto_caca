@@ -15,10 +15,51 @@
   <%= @deuda.descripcion %>
 </p>
 
-<p>
-  <b>Credito:</b>
-  <%= @deuda.credito.descripcion %>
-</p>
+<% if @deuda.credito.present? %>
+	<p>
+  		<b>Credito:</b>
+  		<%= @deuda.credito.descripcion %>
+	</p>
+<% end %>
+
+<% if @deuda.deuda_original.present? %>
+	<p>
+		<b>Deuda original:</b>
+  		<%= @deuda.deuda_original.descripcion %>
+	</p>
+<% end %>
+
+<% if @deuda.extensiones_deuda.present? %>
+	<p>
+  		<b>Extensiones de la deuda:</b>
+  		<table>
+  		<thead>
+  			<tr>
+  				<th>Descripcion</th>
+  				<th>Fecha de creacion</th>
+  				<th>Monto</th>
+			</tr>
+  		</thead>
+  		<tbody>
+<!- XXX: http://stackoverflow.com/questions/5370436/creating-a-loop-in-ruby-on-rails-view ->
+		<% @deuda.extensiones_deuda.each do |i| %>
+			<tr>
+				<td>
+					<%= i.descripcion %>
+				</td>
+				<td>
+					<%= i.contraido %>
+				</td>
+				<td>
+					<%= i.monto%>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+		</table>
+	</p>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_deuda_path(@deuda) %> |
