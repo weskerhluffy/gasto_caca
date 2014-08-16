@@ -123,4 +123,18 @@ class EgresosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+   def historico
+#    @egresos = Egreso.all
+# XXX: http://www.justinweiss.com/blog/2014/02/17/search-and-filter-rails-models-without-bloating-your-controller/
+    @egresos = Egreso.all()
+#    @egresos = Egreso.recientes()
+    logger.debug "rock city boy"
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @egresos }
+    end
+  end
 end

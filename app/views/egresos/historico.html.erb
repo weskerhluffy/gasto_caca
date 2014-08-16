@@ -1,0 +1,51 @@
+<h1>Listing egresos</h1>
+
+<table id="egresosTbl">
+	<thead>
+  <tr>
+    <th class="descripcion">Descripcion</th>
+    <th class>Referencia bancaria</th>
+    <th class="tiempo">Aplicacion</th>
+    <th>Monto</th>
+    <th>Tipo egreso</th>
+    <th>Medio de pago</th>
+    <th>Creditos</th>
+    <th>Gasto periodico</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+	<thead>
+
+<tbody>
+<% @egresos.each do |egreso| %>
+  <tr>
+    <td><%= egreso.descripcion %></td>
+    <td><%= egreso.referencia_bancaria%></td>
+    <td>
+    	<% if egreso.aplicacion.present? %>
+	    	<%= egreso.aplicacion %>
+	    <% else %>
+	    	No ha sido aplicado
+		<% end %>
+    </td>
+    <td><%= egreso.monto %></td>
+    <td><%= egreso.tipo_egreso.descripcion %></td>
+    <td><%= egreso.tipo_ingreso.descripcion %></td>
+    <td><%= join_deudas(egreso) %></td>
+	<td>
+    	<% if egreso.aplicacion_periodica.present? %>
+  			<%= egreso.aplicacion_periodica.descripcion %>
+		<% end %>
+	</td>
+    <td><%= link_to 'Show', egreso %></td>
+    <td><%= link_to 'Edit', edit_egreso_path(egreso) %></td>
+    <td><%= link_to 'Destroy', egreso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Egreso', new_egreso_path %>

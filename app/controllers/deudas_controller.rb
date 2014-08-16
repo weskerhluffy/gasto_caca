@@ -67,10 +67,12 @@ class DeudasController < ApplicationController
   def update
     @deuda = Deuda.find(params[:id])
 
+# XXX: http://stackoverflow.com/questions/5629402/how-to-test-if-parameters-exist-in-rails
     if(params[:deuda].has_key?(:deuda_original_id))
       logger.debug("Se slecciono deuda original")
       if(@deuda.credito.present?)
         logger.debug("Estaba asociado con un credito")
+# XXX: http://stackoverflow.com/questions/12023854/rails-remove-child-association-from-parent
         @deuda.credito.deudas.delete(@deuda)
       end
       @deuda.credito_id=nil

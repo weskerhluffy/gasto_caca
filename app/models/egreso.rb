@@ -21,9 +21,9 @@ class Egreso < ActiveRecord::Base
     if incluir_por_aplicar
        # XXX: http://stackoverflow.com/questions/8620547/rails-scope-for-is-not-null-and-is-not-empty-blank
        # XXX: http://stackoverflow.com/questions/3684311/rails-how-to-chain-scope-queries-with-or-instead-of-and
-       where(:aplicacion => 1.month.ago.beginning_of_month..Date.today.end_of_month) | where(:aplicacion=>nil)
+       where(:aplicacion => 1.month.ago.change(day:13)..Date.tomorrow) | where(:aplicacion=>nil)
     else
-       where(:aplicacion => 1.month.ago.beginning_of_month..Date.today.end_of_month) 
+       where(:aplicacion => 1.month.ago.change(day:13)..Date.tomorrow)
     end
   }
 #  scope :recientes, -> { where(:aplicacion => 1.month.ago.beginning_of_month..Date.today.end_of_month) }

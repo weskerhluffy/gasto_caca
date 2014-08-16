@@ -52,11 +52,11 @@
 <div class="field">
 	<%= f.label :deuda %>
 	<br />
-	<% for deuda in Deuda.find(:all) %>
-	<div>
-		<%= check_box_tag "egreso[deuda_ids][]", deuda.id, @egreso.deudas.include?(deuda) %>
-		<%= deuda.descripcion %>
-	</div>
+	<% for deuda in TotalesDeuda.activas %>
+		<div>
+			<%= check_box_tag "egreso[deuda_ids][]", deuda.id, @egreso.deudas.include?(deuda) %>
+			<%= deuda.descripcion %>
+		</div>
 	<% end %>
 </div>
 <div class="actions">

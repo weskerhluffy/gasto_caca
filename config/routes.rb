@@ -28,6 +28,8 @@ GastoCaca::Application.routes.draw do
   post '/upload', to: 'upload#uploadFile'
   
   root :to => "home#index"
+  
+  get "/historico", to: "egresos#historico"
 
 
 #  get "home/index"

@@ -1,3 +1,4 @@
+# TODO: Cambiar ids de tipos por constantes
 class QuerysComplejos < ActiveRecord::Base
   def self.my_query
     self.connection.execute("select * from egresos_aplicados e join tipo_egresos te on (e.tipo_egreso_id=te.id) join tipo_ingresos ti on (e.tipo_ingreso_id=ti.id)")
@@ -55,6 +56,7 @@ class QuerysComplejos < ActiveRecord::Base
   end
   
   def self.totales_disponibles
+# XXX: http://stackoverflow.com/questions/265725/what-is-the-best-way-to-handle-constants-in-ruby-when-using-rails
     @totales_result=self.connection.execute("
       select 
       ti.descripcion as descripcion,
@@ -63,12 +65,26 @@ class QuerysComplejos < ActiveRecord::Base
       where i.tipo_ingreso_id=ti.id
       )
       -
-      (select sum(e.monto)
-      from egresos_aplicados e
-      where e.tipo_ingreso_id=ti.id) 
+      if(
+        ti.id=1
+      ,
+        (
+            select sum(e.monto)
+            from egresos_aplicados e
+            where (e.tipo_ingreso_id =ti.id
+            and e.tipo_egreso_id!=6)
+            or e.tipo_ingreso_id =5
+        )
+      ,
+        (
+            select sum(e.monto)
+            from egresos_aplicados e
+            where e.tipo_ingreso_id=ti.id
+        )
+      )
       as monto
       from tipo_ingresos ti
-      where ti.id!=4
+      where ti.id!=#{TipoIngreso::PRESTAMO}
       order by monto desc
     ")
 #      having monto>0
@@ -81,13 +97,15 @@ class QuerysComplejos < ActiveRecord::Base
       from egresos_aplicados e
       join tipo_egresos te
       on (e.tipo_egreso_id=te.id)
-      where month(e.aplicacion)=month(now())
+      where e.aplicacion between DATE_SUB(CURDATE(),interval 1 month)- interval day(curdate()) day + interval 1 day + interval 12 day and curdate()+ interval 1 day
       and e.id not in (select distinct i.egreso_id from ingresos i where i.egreso_id is not null)
       group by e.tipo_egreso_id,te.descripcion
       order by monto desc
     ")
     return @totales_result
   end
+  
+  
   def self.totales_banco
     banco_neto=""
     banco_fisico=""
@@ -98,8 +116,9 @@ class QuerysComplejos < ActiveRecord::Base
       (
           select sum(e.monto) 
           from egresos_aplicados e
-          where e.tipo_ingreso_id=1
-          and e.tipo_egreso_id!=6
+          where (e.tipo_ingreso_id =1
+          and e.tipo_egreso_id!=6)
+          or e.tipo_ingreso_id =5
       ) as banco_fisico
       from ingresos i
       where i.tipo_ingreso_id=1

@@ -53,18 +53,6 @@ Totales egresos.
 
 
 <h4>
-Totales netos.
-</h4>
-<table>
-<% @totales.each do |titulo, valor| %>
-	<tr>
-		<td><%= titulo %></td>
-		<td align="right"><%= valor %></td>
-	</tr>
-<% end %>
-</table>
-	
-<h4>
 Totales banco.
 </h4>
 <table>
@@ -72,6 +60,18 @@ Totales banco.
 	<tr>
 		<td><%= titulo %></td>
 		<td align="right"><%= valor %></td>
+	</tr>
+<% end %>
+</table>
+
+<h4>
+Totales deudas.
+</h4>
+<table>
+<% TotalesDeuda.activas.each do |deuda| %>
+	<tr>
+		<td><%= deuda.descripcion %></td>
+		<td align="right"><%= deuda.restante %></td>
 	</tr>
 <% end %>
 </table>
