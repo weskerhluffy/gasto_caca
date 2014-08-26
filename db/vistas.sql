@@ -1,6 +1,7 @@
 create view totales_deudas
 as
 select
+select
 d.*,
 d.monto
 +
@@ -13,16 +14,20 @@ ifnull(
     0
 )
 -
-(
-select sum(e.monto)
-from egresos e
-join 
-deudas_egresos de
-on (e.id=de.egreso_id)
-where de.deuda_id=d.id
-) as restante
+ifnull(
+    (
+        select sum(e.monto)
+        from egresos e
+        join deudas_egresos de
+        on (e.id=de.egreso_id)
+        where de.deuda_id=d.id
+    ),
+    0
+) 
+as restante
 from deudas d
-where d.deuda_original_id is null;
+where d.deuda_original_id is null
+or d.deuda_original_id=0;
 
 create view egresos_aplicados
 as

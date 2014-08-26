@@ -15,3 +15,4 @@
 //= require datatables/js/jquery.dataTables.js
 //= require egresos
 //= require ingresos
+//= require deudas

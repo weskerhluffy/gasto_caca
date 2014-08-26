@@ -1,4 +1,6 @@
 <%= form_for :uploadFile, :html => {:multipart => true} do |f| %>
-  <%= file_field "upload","datafile" %>
-  <%= f.submit "Upload" %>
+<%= file_field "upload","datafile" %>
+<%= f.label "Subir a egresos? Si no, a deudas" %>
+<%= check_box_tag 'carga_a_egresos', "true", true %>
+<%= f.submit "Upload" %>
 <% end %>

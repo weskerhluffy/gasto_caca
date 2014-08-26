@@ -1,4 +1,4 @@
-<h1>Listing deudas</h1>
+<h1>Restante deudas</h1>
 
 <table id="tblDeudas">
 	<thead>
@@ -7,11 +7,7 @@
     <th>Contraido</th>
     <th>Descripcion</th>
     <th>Credito</th>
-    <th>Referencia bancaria</th>
-    <th>Tipo egreso</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Restante</th>
   </tr></thead>
   
   <tbody>
@@ -32,20 +28,8 @@
 			<% end %>
    		<% end %>
     </td>
-    <td><%= deuda.referencia_bancaria %></td>
-    <td>
-    	<% if deuda.tipo_egreso.present? %>
-  			<%= deuda.tipo_egreso.descripcion %>
-		<% end %>
-	</td>
-    <td><%= link_to 'Show', deuda %></td>
-    <td><%= link_to 'Edit', edit_deuda_path(deuda) %></td>
-    <td><%= link_to 'Destroy', deuda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= deuda.restante %></td>
   </tr>
 <% end %>
 </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Deuda', new_deuda_path %>

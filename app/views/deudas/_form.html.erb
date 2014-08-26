@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :contraido %><br />
-    <%= f.datetime_select :contraido %>
+    <%= f.datetime_select :contraido , :include_seconds => true %>
   </div>
   <div class="field">
     <%= f.label :descripcion %><br />
@@ -32,6 +32,15 @@
     <%= f.label :deuda_original %><br />
     <%= f.collection_select(:deuda_original_id, TotalesDeuda.activas, :id, :descripcion,{:include_blank => 'Ni madres'}) %>
   </div>
+  <div class="field">
+    <%= f.label :referencia_bancaria%><br />
+    <%= f.text_area :referencia_bancaria%>
+  </div>
+<div class="field">
+	<%= f.label :tipo_egreso %>
+	<br />
+	<%= f.collection_select(:tipo_egreso_id, TipoEgreso.all, :id, :descripcion) %>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>

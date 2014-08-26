@@ -30,6 +30,7 @@ GastoCaca::Application.routes.draw do
   root :to => "home#index"
   
   get "/historico", to: "egresos#historico"
+  get "/totales_deudas", to: "deudas#totales"
 
 
 #  get "home/index"

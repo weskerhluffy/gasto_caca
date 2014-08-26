@@ -100,4 +100,14 @@ class DeudasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def totales
+    @deudas=TotalesDeuda.activas
+    logger.debug "totales cagadas"
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @deudas}
+    end
+  end
 end
